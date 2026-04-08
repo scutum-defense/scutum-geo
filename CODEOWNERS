@@ -1,0 +1,4 @@
+* @ScutumDefense/spatial-intelligence
+/src/zones/ @ScutumDefense/spatial-intelligence @ScutumDefense/data-platform
+/src/corridors/ @ScutumDefense/spatial-intelligence
+/src/proximity/ @ScutumDefense/spatial-intelligence @ScutumDefense/platform-security
