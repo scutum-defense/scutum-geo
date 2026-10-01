@@ -30,3 +30,5 @@ export { projectThreatCorridor } from "./proximity/threat-corridor";
 
 // Projections
 export { latLngToMercator, mercatorToLatLng } from "./projections/mercator";
+export { MultiTargetTracker } from "./tracking/multi-target";
+export type { MultiTargetOptions, MultiTrackState, Plot, TrackStatus } from "./tracking/multi-target";
