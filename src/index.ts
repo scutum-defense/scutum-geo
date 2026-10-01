@@ -7,6 +7,7 @@ export type {
   ZoneViolation,
 } from "./zones/types";
 export { ZoneClassifier } from "./zones/classifier";
+export { ZoneIndex } from "./zones/zone-index";
 
 // Corridors
 export type { Corridor, CorridorDeviation } from "./corridors/types";
