@@ -8,6 +8,8 @@ export type {
 } from "./zones/types";
 export { ZoneClassifier } from "./zones/classifier";
 export { ZoneIndex } from "./zones/zone-index";
+export { KalmanTracker } from "./tracking/kalman";
+export type { TrackState, KalmanOptions } from "./tracking/kalman";
 
 // Corridors
 export type { Corridor, CorridorDeviation } from "./corridors/types";
