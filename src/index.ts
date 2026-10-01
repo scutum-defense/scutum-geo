@@ -36,4 +36,3 @@ export { computeAssociationWeights } from "./tracking/jpda";
 export type { AssociationWeights, JpdaOptions, JpdaPlot, JpdaTrack } from "./tracking/jpda";
 export { PersistentJpdaTracker } from "./tracking/persistent-jpda";
 export type { JpdaTrackState, PersistentJpdaOptions } from "./tracking/persistent-jpda";
-export { KalmanTracker } from "./tracking/kalman";
