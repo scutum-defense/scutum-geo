@@ -17,6 +17,9 @@ export {
   haversineDistance,
   isPointInPolygon,
   distanceToPolygon,
+  distanceToSegment,
+  crossTrackDistance,
+  destinationPoint,
   bearing,
 } from "./proximity/distance";
 export type { ThreatCorridor } from "./proximity/threat-corridor";
