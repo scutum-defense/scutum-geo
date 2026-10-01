@@ -32,3 +32,5 @@ export { projectThreatCorridor } from "./proximity/threat-corridor";
 export { latLngToMercator, mercatorToLatLng } from "./projections/mercator";
 export { MultiTargetTracker } from "./tracking/multi-target";
 export type { MultiTargetOptions, MultiTrackState, Plot, TrackStatus } from "./tracking/multi-target";
+export { computeAssociationWeights } from "./tracking/jpda";
+export type { AssociationWeights, JpdaOptions, JpdaPlot, JpdaTrack } from "./tracking/jpda";

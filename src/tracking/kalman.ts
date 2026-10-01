@@ -182,6 +182,18 @@ export class KalmanTracker {
   getState(): TrackState | null {
     return this.initialized ? this.toGeo() : null;
   }
+
+  /**
+   * Position sub-covariance (2x2, ENU meters) of the current estimate.
+   * Used by association algorithms to compute Mahalanobis distances.
+   */
+  getPositionCovariance(): [[number, number], [number, number]] | null {
+    if (!this.initialized) return null;
+    return [
+      [this.P[0][0], this.P[0][1]],
+      [this.P[1][0], this.P[1][1]],
+    ];
+  }
 }
 
 function matMul(a: number[][], b: number[][]): number[][] {
