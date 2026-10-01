@@ -34,3 +34,6 @@ export { MultiTargetTracker } from "./tracking/multi-target";
 export type { MultiTargetOptions, MultiTrackState, Plot, TrackStatus } from "./tracking/multi-target";
 export { computeAssociationWeights } from "./tracking/jpda";
 export type { AssociationWeights, JpdaOptions, JpdaPlot, JpdaTrack } from "./tracking/jpda";
+export { PersistentJpdaTracker } from "./tracking/persistent-jpda";
+export type { JpdaTrackState, PersistentJpdaOptions } from "./tracking/persistent-jpda";
+export { KalmanTracker } from "./tracking/kalman";

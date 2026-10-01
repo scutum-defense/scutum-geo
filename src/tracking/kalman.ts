@@ -184,6 +184,51 @@ export class KalmanTracker {
   }
 
   /**
+   * Weighted (probabilistic) update: fuse a position observation with an
+   * association probability beta (JPDA). The measurement is blended toward
+   * the prediction by beta, which is the standard PDA weighting so uncertain
+   * associations move the estimate less than certain ones.
+   */
+  updateWeighted(point: GeoPoint, t: number, beta: number): TrackState {
+    if (beta <= 0) {
+      this.predict(t);
+      return this.toGeo();
+    }
+    if (!this.initialized) {
+      this.initialize(point, t);
+      return this.toGeo();
+    }
+    this.predict(t);
+    const { e, n } = this.toLocal(point);
+    // Blend the residual by beta before applying the standard gain.
+    const state0 = [...this.s];
+    const y = [e - state0[0], n - state0[1]];
+    const H = [
+      [1, 0, 0, 0],
+      [0, 1, 0, 0],
+    ];
+    const R = [
+      [this.r * this.r, 0],
+      [0, this.r * this.r],
+    ];
+    const PHt = matMul(this.P, transpose(H));
+    const S = matAdd(matMul(H, PHt), R);
+    const K = matMul(PHt, inv2(S));
+    this.s = this.s.map(
+      (v, i) => v + beta * (K[i][0] * y[0] + K[i][1] * y[1]),
+    );
+    const KH = matMul(K, H);
+    const I4 = [
+      [1, 0, 0, 0],
+      [0, 1, 0, 0],
+      [0, 0, 1, 0],
+      [0, 0, 0, 1],
+    ];
+    this.P = matMul(matSub(I4, KH), this.P);
+    return this.toGeo();
+  }
+
+  /**
    * Position sub-covariance (2x2, ENU meters) of the current estimate.
    * Used by association algorithms to compute Mahalanobis distances.
    */
